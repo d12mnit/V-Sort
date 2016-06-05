@@ -1,11 +1,11 @@
 /*
  * @Author: v_mmmzzhang
  * @Date:   2016-06-03 11:26:53
- * @Last Modified by:   v_mmmzzhang
- * @Last Modified time: 2016-06-03 17:52:06
+ * @Last Modified by:   d12mnit
+ * @Last Modified time: 2016-06-05 22:05:18
  */
 window.onload = function() {
-    'use strict';
+    'use strict'
     var canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d'),
         width = window.innerWidth,
@@ -30,7 +30,7 @@ window.onload = function() {
     })
     document.getElementById('num').addEventListener('change', function(event) {
         arrLen = document.getElementById('num').value;
-        RandomArr()
+        randomArr()
         highlight(sortArr)
         show()
     })
@@ -68,7 +68,7 @@ window.onload = function() {
      * 生成random数组
      * @param {[num]} length   [description]
      */
-    function RandomArr() {
+    function randomArr() {
         sortArr = [];
         uw = width / arrLen;
         for (var i = 0; i < arrLen; i++) {
@@ -193,7 +193,7 @@ window.onload = function() {
 
     // 数组内容格式化，为进行交换的元素着色
     function highlight(arr, i, j) {
-        tempArr.push(JSON.parse(JSON.stringify(arr)).map(function(x, idx) {
+        tempArr.push(arr.slice(0).map(function(x, idx) {
             if (idx == i || idx == j) {
                 return {
                     v: x,
@@ -210,7 +210,7 @@ window.onload = function() {
 
     function changeSort(callback) {
         cancelAnimationFrame(aid)
-        RandomArr()
+        randomArr()
         callback(sortArr, 0, sortArr.length - 1)
         show()
     }
@@ -223,8 +223,8 @@ window.onload = function() {
         aid = requestAnimationFrame(show)
     }
 
-    RandomArr()
+    randomArr()
     highlight(sortArr)
     show()
         // bubble(sortArr)
-}
+};
